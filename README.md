@@ -15,7 +15,7 @@ ffmpeg_wrap does not install the python dll file.
 
 ## Compiling
 
-You need `wnim`, `winim`, and `nimpy` if you want to compile `ffmpeg_wrap`.  You can use `nimble` to get all 3.
+`ffmpeg_wrap` is written with `nim`.  You need `wnim`, `winim`, and `nimpy` if you want to compile `ffmpeg_wrap`.  You can use `nimble` to get all 3.
 
 
 ## Example Usage
