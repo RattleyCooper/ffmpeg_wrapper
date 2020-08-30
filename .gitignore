@@ -3,4 +3,4 @@ nimblecache/
 htmldocs/
 .vscode/
 python3.8.dll
-ffmpeg.exe
+ffmpeg_wrap.exe
