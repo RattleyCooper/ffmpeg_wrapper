@@ -1,0 +1,36 @@
+import os
+import wnim
+import winim
+import nimpy
+
+# Put python.dll into following folder
+# C:/Users/username/AppData/Local/Microsoft/WindowsApps
+
+var running_process = false
+var the_proc: PyObject
+let subprocess = pyImport("subprocess")
+let py = pyBuiltinsModule()
+let pipe = subprocess.PIPE
+
+let app = App()
+let frame = Frame(title="ffmpeg_wrap", size=(400, 300))
+
+frame.connect(WM_MOVE) do (event: wEvent): 
+  if running_process == false:
+    running_process = true
+
+    var command_str: string = paramStr(1)
+    for i in 2..paramCount():
+      command_str = command_str & " " & paramStr(i)
+    the_proc = subprocess.Popen(command_str, stdin=pipe)
+
+frame.connect(WM_CLOSE) do (event: wEvent):
+  var command = "q"
+  var pycommand = py.str.encode(py.str(command), "utf-8")
+  discard the_proc.communicate(input=pycommand)
+  sleep(1000)
+  discard the_proc.terminate()
+  quit(0)
+
+frame.center()
+app.mainLoop()
