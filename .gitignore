@@ -4,3 +4,8 @@ htmldocs/
 .vscode/
 python3.8.dll
 ffmpeg_wrap.exe
+ffmpeg_wrap_linkerArgs.txt
+taskkillable.exe
+taskkillable.nim
+test file.mp4
+ffmpeg.exe
