@@ -21,7 +21,7 @@ frame.connect(WM_MOVE) do (event: wEvent):
     var command_str: string = paramStr(1)
     for i in 2..paramCount():
       var param: string = paramStr(i)
-      if param.contains(" "):
+      if param.contains(' '):
         param = "\"" & paramStr(i) & "\""
       else:
         param = paramStr(i)
