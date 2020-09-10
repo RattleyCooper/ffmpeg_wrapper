@@ -18,10 +18,14 @@ let frame = Frame(title="ffmpeg_wrap", size=(400, 300))
 frame.connect(WM_MOVE) do (event: wEvent): 
   if running_process == false:
     running_process = true
-
     var command_str: string = paramStr(1)
     for i in 2..paramCount():
-      command_str = command_str & " " & paramStr(i)
+      var param: string = paramStr(i)
+      if param.contains(" "):
+        param = "\"" & paramStr(i) & "\""
+      else:
+        param = paramStr(i)
+      command_str = command_str & " " & param
     the_proc = subprocess.Popen(command_str, stdin=pipe)
 
 frame.connect(WM_CLOSE) do (event: wEvent):
