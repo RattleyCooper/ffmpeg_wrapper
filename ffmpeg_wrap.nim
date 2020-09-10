@@ -25,8 +25,7 @@ frame.connect(WM_MOVE) do (event: wEvent):
     the_proc = subprocess.Popen(command_str, stdin=pipe)
 
 frame.connect(WM_CLOSE) do (event: wEvent):
-  var command = "q"
-  var pycommand = py.str.encode(py.str(command), "utf-8")
+  let pycommand = py.str.encode(py.str("q"), "utf-8")
   discard the_proc.communicate(input=pycommand)
   sleep(1000)
   discard the_proc.terminate()
