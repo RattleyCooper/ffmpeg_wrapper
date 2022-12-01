@@ -1,5 +1,5 @@
 import os
-import wnim
+import wNim
 import winim
 import nimpy
 
@@ -15,7 +15,7 @@ let pipe = subprocess.PIPE
 let app = App()
 let frame = Frame(title="ffmpeg_wrap", size=(400, 300))
 
-frame.connect(WM_MOVE) do (event: wEvent): 
+frame.connect(WM_MOVE) do (event: wEvent):
   if running_process == false:
     running_process = true
     var command_str: string = paramStr(1)

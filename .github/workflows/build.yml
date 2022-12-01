@@ -1,0 +1,19 @@
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: "1.6.10"
+      - run: sudo apt-get install -y mingw-w64
+      - run: nimble install -y
+      - run: nim c -d:mingw ffmpeg_wrapper.nim
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: ffmpeg_wrapper.exe

@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "packages": {
+    "winim": {
+      "version": "3.9.0",
+      "vcsRevision": "3abd0ae122cd41efd0ce6d45fea720ef7091e4ac",
+      "url": "https://github.com/khchen/winim",
+      "downloadMethod": "git",
+      "dependencies": [],
+      "checksums": {
+        "sha1": "02cf5882b51550d7faddbce7eedac35c94dea729"
+      }
+    },
+    "nimpy": {
+      "version": "0.2.0",
+      "vcsRevision": "cdcc5e4434a9b998b97a1758f691e5e83bc3baf3",
+      "url": "https://github.com/yglukhov/nimpy",
+      "downloadMethod": "git",
+      "dependencies": [],
+      "checksums": {
+        "sha1": "d0b3cb69876e2acbeb07eb8561955f884f78b99e"
+      }
+    },
+    "npeg": {
+      "version": "1.0.0",
+      "vcsRevision": "ed0fb09c9033a0757a3d7911066a1fc5add10846",
+      "url": "https://github.com/zevv/npeg",
+      "downloadMethod": "git",
+      "dependencies": [],
+      "checksums": {
+        "sha1": "4936fbcc92864829760ccba3580267190a3ffac3"
+      }
+    },
+    "minhook": {
+      "version": "1.0.0",
+      "vcsRevision": "7c0cfdac09e6b02114741318fe3e3284fc1ac334",
+      "url": "https://github.com/khchen/minhook",
+      "downloadMethod": "git",
+      "dependencies": [],
+      "checksums": {
+        "sha1": "a2da03fb64c20b6dba03855addf3e608c4aec62d"
+      }
+    },
+    "memlib": {
+      "version": "1.3.0",
+      "vcsRevision": "0c46ef5e803160a9eab867d5ba0fcdb307aaa492",
+      "url": "https://github.com/khchen/memlib",
+      "downloadMethod": "git",
+      "dependencies": [
+        "winim",
+        "minhook"
+      ],
+      "checksums": {
+        "sha1": "90fb8662a45423370d3c55dc34c0f5449d58779e"
+      }
+    },
+    "wnim": {
+      "version": "0.13.2",
+      "vcsRevision": "320b0a0282f4b7e77df17d5066896983c27e35f5",
+      "url": "https://github.com/khchen/wNim",
+      "downloadMethod": "git",
+      "dependencies": [
+        "winim",
+        "npeg",
+        "memlib"
+      ],
+      "checksums": {
+        "sha1": "5416afd5535683e31f84c9f11078daff2d2fb5e9"
+      }
+    }
+  }
+}
