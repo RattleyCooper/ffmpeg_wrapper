@@ -17,7 +17,7 @@ The resulting binary is around 1.5mb, but if you compile with the `--opt:size` f
 
 ## Example Usage
 
-This will record a section of your screen until you run `taskkill /PID FFMPEG_WRAP_PID`
+This will record a section of your screen until you run `taskkill /PID FFMPEG_WRAPPER_PID`
 
 ```
 ffmpeg_wrap.exe ffmpeg.exe -rtbufsize 150M -f gdigrab -framerate 30 -offset_x 448 -offset_y 240 -video_size 1024x600 -draw_mouse 1 -show_region 1 -i desktop -r 30 -preset ultrafast -tune zerolatency -movflags +faststart screen-recording.mp4
