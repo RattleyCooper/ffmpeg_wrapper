@@ -1,16 +1,19 @@
 import os
+import osproc
 import wnim
 import winim
-import nimpy
 
-# Put python.dll into following folder
-# C:/Users/username/AppData/Local/Microsoft/WindowsApps
 
 var running_process = false
-var the_proc: PyObject
-let subprocess = pyImport("subprocess")
-let py = pyBuiltinsModule()
-let pipe = subprocess.PIPE
+var the_proc: Process
+const procOpts = {
+  poUsePath, 
+  poEvalCommand, 
+  poEchoCmd, 
+  poInteractive,
+  poStdErrToStdOut,
+  poParentStreams
+}
 
 let app = App()
 let frame = Frame(title="ffmpeg_wrap", size=(400, 300))
@@ -26,14 +29,20 @@ frame.connect(WM_MOVE) do (event: wEvent):
       else:
         param = paramStr(i)
       command_str = command_str & " " & param
-    the_proc = subprocess.Popen(command_str, stdin=pipe)
+    the_proc = startProcess(command_str, "", [], nil, procOpts)
 
 frame.connect(WM_CLOSE) do (event: wEvent):
-  let pycommand = py.str.encode(py.str("q"), "utf-8")
-  discard the_proc.communicate(input=pycommand)
-  sleep(1000)
-  discard the_proc.terminate()
-  quit(0)
+  # Use windows API to send the Ctrl+C
+  let ev: DWORD = 0
+  let pid: DWORD = the_proc.processID()
+  GenerateConsoleCtrlEvent(ev, pid)
+  echo "Waiting for ffmpeg to finish..."
+  discard the_proc.waitForExit(120000)
+  echo "Ffmpeg finished!"
+  if the_proc.running():
+    echo "Terminating ffmpeg"
+    the_proc.terminate()
+  quit(QuitSuccess)
 
 frame.center()
 app.mainLoop()
